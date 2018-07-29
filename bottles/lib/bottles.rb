@@ -32,7 +32,7 @@ class BottleVerse
     new(BottleNumber.for(number)).lyrics
   end
 
-  attr_reader :number, :bottle_number
+  attr_reader :bottle_number
   def initialize(number)
     @bottle_number = number
   end
