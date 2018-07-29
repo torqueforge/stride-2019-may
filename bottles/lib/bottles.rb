@@ -30,7 +30,6 @@ end
 class BottleVerse
   def self.lyrics(number)
     new(BottleNumber.for(number)).lyrics
-    new(number).lyrics
   end
 
   attr_reader :number
