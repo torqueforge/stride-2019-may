@@ -14,7 +14,7 @@ class House
       "the house that Jack built"]
   attr_reader :data, :prefix
 
-  def initialize(orderer: OriginalOrderer.new, prefixer: MundanePrefixer.new)
+  def initialize(orderer: UnchangedOrderer.new, prefixer: MundanePrefixer.new)
     @data = orderer.order(DATA)
     @prefix = prefixer.prefix
   end
@@ -33,7 +33,7 @@ class House
 end
 
 
-class OriginalOrderer
+class UnchangedOrderer
   def order(data)
     data
   end
