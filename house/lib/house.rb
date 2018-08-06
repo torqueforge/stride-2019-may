@@ -17,6 +17,10 @@ class OrderedPhrases
   def initialize(orderer: UnchangedOrderer.new, data: DATA)
     @list = orderer.order(data)
   end
+
+  def series(length)
+    list.last(length).join(" ")
+  end
 end
 
 class House
