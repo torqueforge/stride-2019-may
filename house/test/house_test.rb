@@ -58,6 +58,12 @@ class OrderedPhrasesTest < Minitest::Test
     expected = "2a 2b 3a 3b the house that Jack built"
     assert_equal expected, OrderedPhrases.new(data: data).series(3)
   end
+
+  def test_series_from_two_dimensional_array_containing_nils
+    data     = [['1a', '1b', '1c'], ['2a', nil, '2c'], ['3a', '3b', '3c'], ['the house', nil, 'that Jack built']]
+    expected = "2a 2c 3a 3b 3c the house that Jack built"
+    assert_equal expected, OrderedPhrases.new(data: data).series(3)
+  end
 end
 
 
