@@ -36,6 +36,15 @@ class MixedColumnOrdererTest < Minitest::Test
   end
 end
 
+class MixedColumnButLastOrdererTest < Minitest::Test
+  def test_lines
+    Random.srand(1)
+    data     = [['1a', '1b', '1c'], ['2a', nil, '2c'], ['3a', '3b', '3c'], ['the house', nil, 'that Jack built']]
+    expected = [["1a", nil, "1c"], ["3a", "3b", "3c"], ["2a", "1b", "2c"], ["the house", nil, "that Jack built"]]
+    assert_equal expected, MixedColumnButLastOrderer.new.order(data)
+  end
+end
+
 
 class OrderedPhrasesTest < Minitest::Test
   def test_series_from_one_dimensional_array
