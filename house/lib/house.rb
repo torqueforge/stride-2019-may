@@ -27,6 +27,29 @@ class OrderedPhrases
   end
 end
 
+
+class CumulativeTale
+  attr_reader :phrases, :prefix
+
+  def initialize(phrases: OrderedPhrases.new, prefixer: MundanePrefixer.new)
+    @phrases = phrases
+    @prefix = prefixer.prefix
+  end
+
+  def recite
+    1.upto(phrases.size).collect {|i| line(i)}.join("\n")
+  end
+
+  def phrase(num)
+    phrases.series(num)
+  end
+
+  def line(num)
+    "#{prefix} #{phrase(num)}.\n"
+  end
+end
+
+
 class House
   attr_reader :phrases, :prefix
 
