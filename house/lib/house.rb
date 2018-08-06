@@ -19,7 +19,7 @@ class OrderedPhrases
   end
 
   def series(length)
-    list.last(length).join(" ")
+    list.last(length).flatten.compact.join(" ")
   end
 
   def size
