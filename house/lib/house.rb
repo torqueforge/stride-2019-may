@@ -40,6 +40,7 @@ class House
   attr_reader :phrases, :data, :prefix
 
   def initialize(phrases: OrderedPhrases.new, orderer: UnchangedOrderer.new, prefixer: MundanePrefixer.new)
+    @phrases = phrases
     @data = orderer.order(DATA)
     @prefix = prefixer.prefix
   end
