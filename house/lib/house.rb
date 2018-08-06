@@ -74,6 +74,12 @@ class MixedColumnOrderer
   end
 end
 
+class MixedColumnButLastOrderer
+  def order(data)
+    data[0...-1].transpose.map {|column| column.shuffle}.transpose << data.last
+  end
+end
+
 
 class PiratePrefixer
   def prefix
