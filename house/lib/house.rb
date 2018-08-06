@@ -101,4 +101,5 @@ puts
 puts CumulativeTale.new(phrases: OrderedPhrases.new(orderer: RandomButLastOrderer.new)).line(12)
 puts
 puts CumulativeTale.new(phrases: OrderedPhrases.new(orderer: MixedColumnOrderer.new)).line(12)
-
+puts
+puts CumulativeTale.new(phrases: OrderedPhrases.new(orderer: MixedColumnButLastOrderer.new)).line(12)
