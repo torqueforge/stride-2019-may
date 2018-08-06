@@ -104,8 +104,8 @@ class MundanePrefixer
 end
 
 
-puts House.new(phrases: OrderedPhrases.new(orderer: RandomOrderer.new)).line(12)
+puts CumulativeTale.new(phrases: OrderedPhrases.new(orderer: RandomOrderer.new)).line(12)
 puts
-puts House.new(phrases: OrderedPhrases.new(orderer: RandomOrderer.new), prefixer: PiratePrefixer.new).line(12)
+puts CumulativeTale.new(phrases: OrderedPhrases.new(orderer: RandomOrderer.new), prefixer: PiratePrefixer.new).line(12)
 puts
-puts House.new(phrases: OrderedPhrases.new(orderer: RandomButLastOrderer.new)).line(12)
+puts CumulativeTale.new(phrases: OrderedPhrases.new(orderer: RandomButLastOrderer.new)).line(12)
