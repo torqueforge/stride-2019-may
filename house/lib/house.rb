@@ -14,8 +14,8 @@ class OrderedPhrases
       "the house that Jack built"]
   attr_reader :list
 
-  def initialize(orderer: UnchangedOrderer.new)
-    @list = orderer.order(DATA)
+  def initialize(orderer: UnchangedOrderer.new, data: DATA)
+    @list = orderer.order(data)
   end
 end
 
