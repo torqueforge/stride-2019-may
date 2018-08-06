@@ -37,6 +37,25 @@ class OrderedPhrasesTest < Minitest::Test
 end
 
 
+class CumulativeTaleTest < Minitest::Test
+  def test_recites_cumulatively
+    data = ['phrase 4', 'phrase 3', 'phrase 2', 'phrase 1' ]
+    phrases = OrderedPhrases.new(data: data)
+
+    expected = <<~TALE
+      This is phrase 1.
+
+      This is phrase 2 phrase 1.
+
+      This is phrase 3 phrase 2 phrase 1.
+
+      This is phrase 4 phrase 3 phrase 2 phrase 1.
+   TALE
+    assert_equal expected, CumulativeTale.new(phrases: phrases).recite
+  end
+end
+
+
 class HouseTest < Minitest::Test
   attr_reader :tale
   def setup
