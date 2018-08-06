@@ -91,7 +91,7 @@ class MundanePrefixer
 end
 
 
-puts House.new(orderer: RandomOrderer.new).line(12)
+puts House.new(phrases: OrderedPhrases.new(orderer: RandomOrderer.new)).line(12)
 puts
 puts House.new(prefixer: PiratePrefixer.new).line(12)
 puts
