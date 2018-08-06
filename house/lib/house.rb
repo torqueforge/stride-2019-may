@@ -21,6 +21,10 @@ class OrderedPhrases
   def series(length)
     list.last(length).join(" ")
   end
+
+  def size
+    list.size
+  end
 end
 
 class House
