@@ -93,3 +93,6 @@ puts
 puts CumulativeTale.new(phrases: OrderedPhrases.new(orderer: RandomOrderer.new), prefixer: PiratePrefixer.new).line(12)
 puts
 puts CumulativeTale.new(phrases: OrderedPhrases.new(orderer: RandomButLastOrderer.new)).line(12)
+puts
+puts CumulativeTale.new(phrases: OrderedPhrases.new(orderer: MixedColumnOrderer.new)).line(12)
+
