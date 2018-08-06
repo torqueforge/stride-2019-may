@@ -38,7 +38,7 @@ end
 
 
 class OrderedPhrasesTest < Minitest::Test
-  def test_series
+  def test_series_from_one_dimensional_array
     data     = ['1a 1b', '2a 2b', '3a 3b', 'the house that Jack built']
     expected = "2a 2b 3a 3b the house that Jack built"
     assert_equal expected, OrderedPhrases.new(data: data).series(3)
