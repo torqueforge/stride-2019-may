@@ -33,15 +33,21 @@ class House
 end
 
 
+class OriginalOrderer
+  def order(data)
+    data
+  end
+end
+
 class RandomOrderer
   def order(data)
     data.shuffle
   end
 end
 
-class OriginalOrderer
+class RandomButLastOrderer
   def order(data)
-    data
+    data[0...-1].shuffle << data.last
   end
 end
 
@@ -64,3 +70,5 @@ puts
 puts House.new(prefixer: PiratePrefixer.new).line(12)
 puts
 puts House.new(orderer: RandomOrderer.new, prefixer: PiratePrefixer.new).line(12)
+puts
+puts House.new(orderer: RandomButLastOrderer.new).line(12)
