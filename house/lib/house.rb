@@ -12,10 +12,10 @@ class OrderedPhrases
       "the rat that ate",
       "the malt that lay in",
       "the house that Jack built"]
-  attr_reader :data
+  attr_reader :list
 
   def initialize(orderer: UnchangedOrderer.new)
-    @data = orderer.order(DATA)
+    @list = orderer.order(DATA)
   end
 end
 
