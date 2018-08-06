@@ -50,6 +50,7 @@ class House
   end
 
   def phrase(num)
+    phrases.series(num)
     data.last(num).join(" ")
   end
 
