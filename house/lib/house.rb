@@ -37,7 +37,7 @@ class House
       "the rat that ate",
       "the malt that lay in",
       "the house that Jack built"]
-  attr_reader :data, :prefix
+  attr_reader :phrases, :data, :prefix
 
   def initialize(phrases: OrderedPhrases.new, orderer: UnchangedOrderer.new, prefixer: MundanePrefixer.new)
     @data = orderer.order(DATA)
