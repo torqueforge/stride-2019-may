@@ -27,6 +27,15 @@ class RandomButLastOrdererTest < Minitest::Test
  end
 end
 
+class MixedColumnOrdererTest < Minitest::Test
+  def test_lines
+    Random.srand(1)
+    data     = [['1a', '1b'], ['2a', '2b'], ['3a', '3b'], ['the house', 'that Jack built']]
+    expected = [["the house", "1b"], ["3a", "3b"], ["1a", "2b"], ["2a", "that Jack built"]]
+    assert_equal expected, MixedColumnOrderer.new.order(data)
+  end
+end
+
 
 class OrderedPhrasesTest < Minitest::Test
   def test_series
