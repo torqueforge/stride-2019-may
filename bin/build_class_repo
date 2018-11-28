@@ -9,13 +9,10 @@ ARGV << "exercises1"
 load '../teach/bin/build_course_repo'
 
 # Delete the non-class related directories
-# TODO move these dirs out of here and into the 'teach' project
 `git rm -r bin`
-`git rm -r instructor_docs`
 
 # Checkout day 1 exercises
 `git checkout origin/bottles -- bottles/`
-`git checkout origin/house -- house/`
 
 # Voila
 class_name = ARGV[2] # pushed on by teach/bin/build_course_repo
