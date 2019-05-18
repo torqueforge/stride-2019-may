@@ -1,4 +1,16 @@
+class Integer
+  def to_bottle_number
+    BottleNumber.for(self)
+  end
+end
+
 class Bottles
+  attr_reader :verse_template
+
+  def initialize(verse_template: BottleVerse)
+    @verse_template = verse_template
+  end
+
   def song
     verses(99, 0)
   end
@@ -8,7 +20,22 @@ class Bottles
   end
 
   def verse(number)
-    bottle_number = BottleNumber.for(number)
+    verse_template.lyrics(number)
+  end
+end
+
+class BottleVerse
+  def self.lyrics(number)
+    new(number).lyrics
+  end
+
+  attr_reader :number
+  def initialize(number)
+    @number = number
+  end
+
+  def lyrics
+    bottle_number = number.to_bottle_number
 
     "#{bottle_number} of beer on the wall, ".capitalize +
     "#{bottle_number} of beer.\n" +
@@ -56,7 +83,7 @@ class BottleNumber
   end
 
   def successor
-    BottleNumber.for(number - 1)
+    (number - 1).to_bottle_number
   end
 end
 
@@ -70,7 +97,7 @@ class BottleNumber0 < BottleNumber
   end
 
   def successor
-    BottleNumber.for(99)
+    99.to_bottle_number
   end
 end
 
