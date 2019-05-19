@@ -8,6 +8,12 @@ class SamlIdentityProvider
     return [SamlIdentityProvider.new]
   end
 
+  def self.for_name(name)
+    identity_provider = SamlIdentityProvider.where(name: name).first
+    raise ActiveRecord::RecordNotFound unless identity_provider
+    identity_provider
+  end
+
   def deployment_code
     'a deployment_code'
   end
@@ -59,6 +65,17 @@ end
 class OneLoginSamlSettings
   attr_reader :assertion_consumer_service_url, :issuer, :idp_sso_target_url, :idp_cert_fingerprint
 
+  def self.for_saml_controller_create(assertion_consumer_service_url, issuer, target_url, fingerprint)
+    # Experimental
+    saml_settings = OneLoginSamlSettings.new
+
+    saml_settings.assertion_consumer_service_url = assertion_consumer_service_url
+    saml_settings.issuer                         = issuer
+    saml_settings.idp_sso_target_url             = target_url
+    saml_settings.idp_cert_fingerprint           = fingerprint
+    saml_settings
+  end
+
   def assertion_consumer_service_url=(arg)
     @assertion_consumer_service_url = arg
   end
@@ -84,6 +101,16 @@ module ActiveRecord
   end
 end
 
+class Response
+  def self.for(issuer, saml_response)
+    if issuer == 'www.healthnet.com:omada'
+      HealthNetSamlResponse.new(saml_response)
+    else
+      StandardResponse.new(saml_response)
+    end
+  end
+end
+
 class StandardResponse
   attr_reader :settings, :saml_response
 
@@ -101,6 +128,10 @@ class StandardResponse
 
   def is_valid?
     true
+  end
+
+  def invalid?
+    !is_valid?
   end
 
   def validate!
